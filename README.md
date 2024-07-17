@@ -248,7 +248,6 @@ Create a another html file i.e. submission-page.html and add the code from below
 
 Now when you submit this form from any location, the data will be saved in the Google Sheet. And the mail be also sent  to email address you set in appscript🥳
 
-<img src="https://smmallcdn.net/levi/1712349251133/68747470733a2f2f73686565746d6f6e6b65792e696f2f696d672f6775696465732f31302d776f726b696e672d666f726d2e676966.gif" width="450" />
 
 
 
