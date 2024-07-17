@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML Page</title>
+  
+</head>
+
+<body>
+
+    
+
+    <h1>Book A Service</h1>
+        <form id="myForm" method="POST" action="YOUR_APP_SCRIPT_URL">
+        <div class="row g-3">
+            <div>
+                <input name="Name" type="text" placeholder="Your Name" style="height: 55px;">
+            </div>
+            <div>
+                <input name="Email" type="email" placeholder="Your Email" style="height: 55px;">
+            </div>
+            <div>
+                <input name="Number" type="text" placeholder="Contact Number" style="height: 55px;">
+            </div>
+            <div>
+                <select name="Service" type="text" style="height: 55px;">
+                    <option selected>Select A Service</option>
+                    <option>Book A Contant</option>
+                    <option>Get Training</option>
+                    <option>Rent A House</option>
+                </select>
+            </div>
+            <div>
+                <div id="date1" data-target-input="nearest">
+                    <input name="Date" type="text" placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
+                </div>
+            </div>
+            <div>
+                <textarea name="Request" type="text" placeholder="Special Request"></textarea>
+            </div>
+            <div>
+                <button type="submit">Book Now ($10)</button>
+            </div>
+        </div>
+    </form>
+    
+    <!--Given below is the script that redirects the user to another page submisison-page.html after form submission-->
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var form = event.target;
+    
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open(form.method, form.action, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            
+            // Collect form data
+            var formData = new FormData(form);
+            var params = new URLSearchParams();
+            for (var pair of formData.entries()) {
+                params.append(pair[0], pair[1]);
+            }
+    
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    window.location.href = 'submission-page.html'; // Redirect to payment.html after successful submission
+                }
+            };
+    
+            xhr.send(params.toString());
+        });
+    </script>
+</body>
